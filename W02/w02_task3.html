@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>w02 task3</title>
+</head>
+
+<body>
+    <div>
+        <span>x0:</span><input id="x0" type="text" value="0">
+        <span>y0:</span><input id="y0" type="text" value="0">
+        <span>z0:</span><input id="z0" type="text" value="0">
+    </div>
+    <div>
+        <span>x1:</span><input id="x1" type="text" value="0">
+        <span>y1:</span><input id="y1" type="text" value="0">
+        <span>z1:</span><input id="z1" type="text" value="0">
+    </div>
+    <div>
+        <span>x2:</span><input id="x2" type="text" value="0">
+        <span>y2:</span><input id="y2" type="text" value="0">
+        <span>z2:</span><input id="z2" type="text" value="0">
+    </div>
+    <input type="button" onclick="calc()" value="Calculate the area of the triangle">
+
+    <script src="Vec3.js"></script>
+    <script>
+        function Area(v0, v1, v2) {
+            //e1, e2: 2辺のベクトル
+            var e1 = new Vec3(v1.x - v0.x, v1.y - v0.y, v1.z - v0.z);
+            var e2 = new Vec3(v2.x - v0.x, v2.y - v0.y, v2.z - v0.z);
+
+            //s2: 2辺のベクトルの外積の絶対値の2乗
+            var s2 = (e1.x * e2.y - e1.y * e2.x) * (e1.x * e2.y - e1.y * e2.x) + (e1.y * e2.z - e1.z * e2.y) * (e1.y * e2.z - e1.z * e2.y) + (e1.z * e2.x - e1.x * e2.z) * (e1.z * e2.x - e1.x * e2.z)
+
+            return Math.sqrt(s2) / 2;
+        }
+
+        function calc() {
+            var x0 = parseInt(document.getElementById("x0").value);
+            var y0 = parseInt(document.getElementById("y0").value);
+            var z0 = parseInt(document.getElementById("z0").value);
+            var x1 = parseInt(document.getElementById("x1").value);
+            var y1 = parseInt(document.getElementById("y1").value);
+            var z1 = parseInt(document.getElementById("z1").value);
+            var x2 = parseInt(document.getElementById("x2").value);
+            var y2 = parseInt(document.getElementById("y2").value);
+            var z2 = parseInt(document.getElementById("z2").value);
+
+            var v0 = new Vec3(x0, y0, z0);
+            var v1 = new Vec3(x1, y1, z1);
+            var v2 = new Vec3(x2, y2, z2);
+
+            alert("the area is " + Area(v0, v1, v2));
+        }
+
+    </script>
+</body>
+
+</html>
